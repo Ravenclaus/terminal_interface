@@ -8,5 +8,14 @@ namespace Bangazon_Terminal_Interface.Bangazon.Models
 {
     class Math
     {
+        public int FindPopularity()
+        {
+            return 0;
+        }
+
+        public int FindOrderTotal()
+        {
+            return 0;
+        }
     }
 }
