@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Bangazon_Terminal_Interface.Bangazon.Models;
 
 namespace BangazonUnitTest
 {
@@ -7,8 +8,10 @@ namespace BangazonUnitTest
     public class ProductTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void EnsureCanCreateProduce()
         {
+            Product product = new Product();
+            Assert.IsNotNull(product);
         }
     }
 }
