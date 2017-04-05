@@ -46,11 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BangazonUnitTests\CustomerUnitTest.cs" />
-    <Compile Include="BangazonUnitTests\SqlDatabaseSetup.cs" />
-    <Compile Include="BangazonUnitTests\SqlServerUnitTest1.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Bangazon\Models\Math.cs" />
     <Compile Include="Bangazon\Models\Product.cs" />
     <Compile Include="Bangazon\Models\Order.cs" />
