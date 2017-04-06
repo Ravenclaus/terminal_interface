@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Bangazon_Terminal_Interface.Bangazon.Models
 {
-    class Payment
+    public class Payment
     {
+        public string PaymentType { get; set; }
+
     }
 }
