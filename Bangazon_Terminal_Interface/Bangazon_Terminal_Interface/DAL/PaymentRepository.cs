@@ -18,7 +18,7 @@ namespace Bangazon_Terminal_Interface.DAL
       public PaymentRepository()
         {
             //_paymentConnection = paymentConnection;
-            _paymentConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RavenClausBangazon"].ConnectionString);
+            _paymentConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RavenClausBangazon2"].ConnectionString);
 
         }
 
@@ -29,7 +29,7 @@ namespace Bangazon_Terminal_Interface.DAL
             try
             {
                 var addPaymentTypeCommand = _paymentConnection.CreateCommand();
-                addPaymentTypeCommand.CommandText = "INSERT INTO RavenClausBangazon.dbo.PaymentType(paymentType) VALUES(@name)";
+                addPaymentTypeCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Payment(paymentType) VALUES(@name)";
                 var nameParameter = new SqlParameter("name", SqlDbType.VarChar);
                 nameParameter.Value = name;
                 addPaymentTypeCommand.Parameters.Add(nameParameter);
@@ -46,6 +46,33 @@ namespace Bangazon_Terminal_Interface.DAL
             {
                 _paymentConnection.Close();
             }
+        }
+
+        public void AddPaymentId(int paymentId)
+        {
+            _paymentConnection.Open();
+
+            try
+            {
+                var addPaymentIdCommand = _paymentConnection.CreateCommand();
+                addPaymentIdCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Payment(paymentType) VALUES(@paymentId)";
+                var idParameter = new SqlParameter("paymentId", SqlDbType.Int);
+                idParameter.Value = paymentId;
+                addPaymentIdCommand.Parameters.Add(idParameter);
+
+                addPaymentIdCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+            }
+            finally
+            {
+                _paymentConnection.Close();
+            }
+
         }
     }
 }

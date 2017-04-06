@@ -10,7 +10,7 @@ namespace Bangazon_Terminal_Interface.Controllers.Contracts
     {
         void AddPaymentType(string name);
 
-        //void AddPaymentId (int paymentId)
+        void AddPaymentId(int paymentId);
 
         //Void AddAcctNumber (int acctNumber)
 
