@@ -29,7 +29,7 @@ namespace Bangazon_Terminal_Interface.DAL
             try
             {
                 var addPaymentTypeCommand = _paymentConnection.CreateCommand();
-                addPaymentTypeCommand.CommandText = "INSERT INTO PaymentType(name) VALUES(@name)";
+                addPaymentTypeCommand.CommandText = "INSERT INTO RavenClausBangazon.dbo.PaymentType(paymentType) VALUES(@name)";
                 var nameParameter = new SqlParameter("name", SqlDbType.VarChar);
                 nameParameter.Value = name;
                 addPaymentTypeCommand.Parameters.Add(nameParameter);
