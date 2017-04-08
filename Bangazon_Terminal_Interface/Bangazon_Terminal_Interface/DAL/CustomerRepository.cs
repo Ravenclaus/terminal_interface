@@ -6,16 +6,17 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Bangazon_Terminal_Interface.DAL
 {
-    class CustomerRepository : ICustomer
+    public class CustomerRepository : ICustomer
     {
         IDbConnection _customerConnection;
 
         public CustomerRepository()
         {
-            _customerConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            _customerConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RavenClausBangazon"].ConnectionString);
         }
 
         public void AddNewCustomerAccount(int customerId, string firstName, string lastName, string street, string city, string state, int zipCode, int phone)
@@ -25,11 +26,17 @@ namespace Bangazon_Terminal_Interface.DAL
             try
             {
                 var addNewCustomerCommand = _customerConnection.CreateCommand();
-                addNewCustomerCommand.CommandType = "INSERT INTO RavenClausBangazon2.dbo.Customer(customerId) VALUES(@customerId)";
-                var customerParameter = new SqlParameter("customerId", SqlDbType.Int);
-                customerParameter.Value = customerId;
+                addNewCustomerCommand.CommandType = @"
+                    INSERT INTO 
+                    RavenClausBangazon.dbo.Customer(customerId, firstName, lastName, street, city, state, zipCode, phone) 
+                    VALUES(@customerId, @firstName, @lastName, @street, @city, @state, @zipCode, @phone)";
 
-                addNewCustomerCommand.Parameters.Add(customerParameter);
+                var customerIdParameter = new SqlParameter("customerId", SqlDbType.Int);
+                customerIdParameter.Value = customerId;
+                addNewCustomerCommand.Parameters.Add(customerIdParameter);
+                //do this again for each passing argument
+
+
                 addNewCustomerCommand.ExecuteNonQuery();
             }
             catch (SqlException ex)
