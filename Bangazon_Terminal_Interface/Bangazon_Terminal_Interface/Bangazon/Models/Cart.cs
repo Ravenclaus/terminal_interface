@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Bangazon_Terminal_Interface.Bangazon.Models
 {
-    public class Order
+    public class Cart
     {
         public int OrderId { get; set; }
 
-        public int PaymentId { get; set; }
+        public int PayType { get; set; }
 
         public int CusomerId { get; set; }
 

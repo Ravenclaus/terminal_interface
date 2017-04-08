@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace Bangazon_Terminal_Interface.Contollers.Contracts
 {
-    public interface IOrder
+    public interface ICart
     {
-        void OrderId(int orderId);
+       void AddOrderId(int orderId);
 
-        //void PaymentId(int paymentId);
+       void AddPaymentId(int paymentId);
 
-       // void CustomerId(int customerId);
+       void AddPayType(string payType);
 
-      //  void OrderTotalPrice(int otp);
+       void  AddCustomerId(int customerId); 
+
+      void AddOrderTotalPrice(int otp); 
 
 
     }
