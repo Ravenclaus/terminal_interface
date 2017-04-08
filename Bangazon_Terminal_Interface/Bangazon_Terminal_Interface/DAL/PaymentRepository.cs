@@ -18,18 +18,18 @@ namespace Bangazon_Terminal_Interface.DAL
       public PaymentRepository()
         {
             //_paymentConnection = paymentConnection;
-            _paymentConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RavenClausBangazon2"].ConnectionString);
+            _paymentConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RavenClausBangazon"].ConnectionString);
 
         }
 
-        public void AddPaymentType(string payType, int acctNum)
+        public void AddPaymentType(string payType, int acctNum, int customerId = 1)
         {
             _paymentConnection.Open();
 
             try
             {
                 var addPaymentTypeCommand = _paymentConnection.CreateCommand();
-                addPaymentTypeCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Payment(paymentType, accountNumber) VALUES(@paymentType, @accountNumber)";
+                addPaymentTypeCommand.CommandText = "INSERT INTO RavenClausBangazon.dbo.Payment(paymentType, accountNumber, customerId) VALUES(@paymentType, @accountNumber, @customerId)";
 
                 var payTypeParameter = new SqlParameter("paymentType", SqlDbType.VarChar);
                 payTypeParameter.Value = payType;
@@ -38,6 +38,10 @@ namespace Bangazon_Terminal_Interface.DAL
                 var accountNumParameter = new SqlParameter("accountNumber", SqlDbType.Int);
                 accountNumParameter.Value = acctNum;
                 addPaymentTypeCommand.Parameters.Add(accountNumParameter);
+
+                var customerIdParameter = new SqlParameter("customerId", SqlDbType.Int);
+                customerIdParameter.Value = customerId;
+                addPaymentTypeCommand.Parameters.Add(customerIdParameter);
 
                 addPaymentTypeCommand.ExecuteNonQuery();
 
