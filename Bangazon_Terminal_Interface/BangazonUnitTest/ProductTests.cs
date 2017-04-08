@@ -8,7 +8,7 @@ namespace BangazonUnitTest
     public class ProductTests
     {
         [TestMethod]
-        public void EnsureCanCreateProduce()
+        public void EnsureCanCreateProduct()
         {
             Product product = new Product();
             Assert.IsNotNull(product);

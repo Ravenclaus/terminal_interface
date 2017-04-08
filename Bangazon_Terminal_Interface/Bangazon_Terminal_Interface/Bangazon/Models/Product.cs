@@ -13,5 +13,6 @@ namespace Bangazon_Terminal_Interface.Bangazon.Models
         public string ProductName { get; set; }
 
         public int ProcuctPrice { get; set; }
+
     }
 }
