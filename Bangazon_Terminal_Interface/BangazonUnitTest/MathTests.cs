@@ -4,11 +4,20 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BangazonUnitTest
 {
     [TestClass]
-    public class UnitTest1
+    public class MathTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void EnsureICanCountOrders()
         {
+            //count all orders from all customers in db
+            //this will be joining tables through sql & such
+            
+        }
+
+        [TestMethod]
+        public void EnsureICanFindTotalCost()
+        {
+            //amount * price of each customer's individual order
         }
     }
 }
