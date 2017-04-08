@@ -52,6 +52,8 @@
     <Compile Include="Bangazon\Models\Payment.cs" />
     <Compile Include="Bangazon\Models\Customer.cs" />
     <Compile Include="Bangazon\Models\Validation.cs" />
+    <Compile Include="Controllers\IMath.cs" />
+    <Compile Include="DAL\MathRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
