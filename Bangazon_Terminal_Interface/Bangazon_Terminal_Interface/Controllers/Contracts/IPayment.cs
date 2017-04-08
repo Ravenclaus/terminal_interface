@@ -8,11 +8,11 @@ namespace Bangazon_Terminal_Interface.Controllers.Contracts
 {
     public interface IPayment
     {
-        void AddPaymentType(string name);
+        void AddPaymentType(string name, int acctNum);
 
         void AddPaymentId(int paymentId);
 
-        //Void AddAcctNumber (int acctNumber)
+        void AddAcctNumber(int acctNumber);
 
     }
 }

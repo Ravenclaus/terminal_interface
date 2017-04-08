@@ -11,10 +11,17 @@ namespace Bangazon_Terminal_Interface
     {
         static void Main(string[] args)
         {
-            Console.Write("name");
-            string test = Console.ReadLine();
             PaymentRepository paymentRepository = new PaymentRepository();
-            paymentRepository.AddPaymentType(test);
+
+            // ADDS PAYMENT TYPE AND ACCOUNT NUMBER
+            Console.WriteLine("Enter payment type (Amex, Visa, Checking)");
+            string userPaymentType = Console.ReadLine();
+            Console.WriteLine("Please enter account number");
+            int userAccountNumber = int.Parse(Console.ReadLine());
+            paymentRepository.AddPaymentType(userPaymentType, userAccountNumber);
+
+            // ADDS ACCOUNT NUMBER
+            //paymentRepository.AddAcctNumber(userAccountNumber);
         }
     }
 }

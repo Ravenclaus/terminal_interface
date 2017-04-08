@@ -12,5 +12,7 @@ namespace Bangazon_Terminal_Interface.Bangazon.Models
 
         public int PaymentTypeId { get; set; }
 
+        public int AccountNumber { get; set; }
+
     }
 }

@@ -22,17 +22,22 @@ namespace Bangazon_Terminal_Interface.DAL
 
         }
 
-        public void AddPaymentType(string name)
+        public void AddPaymentType(string payType, int acctNum)
         {
             _paymentConnection.Open();
 
             try
             {
                 var addPaymentTypeCommand = _paymentConnection.CreateCommand();
-                addPaymentTypeCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Payment(paymentType) VALUES(@name)";
-                var nameParameter = new SqlParameter("name", SqlDbType.VarChar);
-                nameParameter.Value = name;
-                addPaymentTypeCommand.Parameters.Add(nameParameter);
+                addPaymentTypeCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Payment(paymentType, accountNumber) VALUES(@paymentType, @accountNumber)";
+
+                var payTypeParameter = new SqlParameter("paymentType", SqlDbType.VarChar);
+                payTypeParameter.Value = payType;
+                addPaymentTypeCommand.Parameters.Add(payTypeParameter);
+
+                var accountNumParameter = new SqlParameter("accountNumber", SqlDbType.Int);
+                accountNumParameter.Value = acctNum;
+                addPaymentTypeCommand.Parameters.Add(accountNumParameter);
 
                 addPaymentTypeCommand.ExecuteNonQuery();
 
@@ -73,6 +78,32 @@ namespace Bangazon_Terminal_Interface.DAL
                 _paymentConnection.Close();
             }
 
+        }
+
+        public void AddAcctNumber(int acctNumber)
+        {
+            _paymentConnection.Open();
+
+            try
+            {
+                var addAccountCommand = _paymentConnection.CreateCommand();
+                addAccountCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Payment(AccountNumber) VALUES(@accountNumber)";
+                var acctParameter = new SqlParameter("accountNumber", SqlDbType.Int);
+                acctParameter.Value = acctNumber;
+                addAccountCommand.Parameters.Add(acctParameter);
+
+                addAccountCommand.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+            }
+            finally
+            {
+                _paymentConnection.Close();
+            }
         }
     }
 }
