@@ -13,26 +13,26 @@ namespace Bangazon_Terminal_Interface.DAL
 {
     public class CartRepository : ICart
     {
-        IDbConnection _paymentConnection; //SHOULD THIS BE UNIVERSAL? or Should it be called _cartConnection?
+        IDbConnection _cartConnection; 
 
         public CartRepository()
         {
-            _paymentConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+            _cartConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
         }
 
-        public void AddOrderId(int orderId)
+        public void addNewCart(int paymentId, int customerId, int cartTotalPrice)
         {
-            _paymentConnection.Open();
+            _cartConnection.Open();
 
             try
             {
-                var addOrderIdCommand = _paymentConnection.CreateCommand();
-                addOrderIdCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Order(orderId) VALUES(@orderId)"; //DOUBLE CHECK THIS dbo.Order and column with NEW SQL DB DATA FROM MIKE
-                var orderParameter = new SqlParameter("orderId", SqlDbType.VarChar);
-                orderParameter.Value = orderId;
+                var addNewCartCommand = _cartConnection.CreateCommand();
+                addNewCartCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Cart(cartId) VALUES(@cartName)"; 
+                var newCartParameter = new SqlParameter("cartName", SqlDbType.VarChar); //THIS NEEDS TO CROSS REF YOUR SQL DATA
+                newCartParameter.Value = cartName;
 
-                addOrderIdCommand.Parameters.Add(orderParameter);
-                addOrderIdCommand.ExecuteNonQuery();
+                addNewCartCommand.Parameters.Add(newCartParameter);
+                addNewCartCommand.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
@@ -41,33 +41,23 @@ namespace Bangazon_Terminal_Interface.DAL
             }
             finally
             {
-                _paymentConnection.Close();
+                _cartConnection.Close();
             }
         }
 
-        public void AddPayType(string payType)
+        public void deleteCart(int cartId)
         {
-            _paymentConnection.Open();
+            throw new NotImplementedException();
+        }
 
-            try
-            {
-                var addPayTypeCommand = _paymentConnection.CreateCommand();
-                addPayTypeCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Order(orderId) VALUES(@orderId)"; //DOUBLE CHECK THIS dbo.Order and column with NEW SQL DB DATA FROM MIKE
-                var payTypeParameter = new SqlParameter("orderId", SqlDbType.VarChar);
-                payTypeParameter.Value = payType;
+        public void editCart(int paymentId, int customerId, int cartTotalPrice)
+        {
+            throw new NotImplementedException();
+        }
 
-                addPayTypeCommand.Parameters.Add(payTypeParameter);
-                addPayTypeCommand.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
-            }
-            finally
-            {
-                _paymentConnection.Close();
-            }
+        public void retrieveCart(int cartId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

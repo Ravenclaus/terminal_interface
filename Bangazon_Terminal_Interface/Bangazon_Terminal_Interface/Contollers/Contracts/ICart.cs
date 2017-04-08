@@ -8,16 +8,13 @@ namespace Bangazon_Terminal_Interface.Contollers.Contracts
 {
     public interface ICart
     {
-       void AddOrderId(int orderId);
+       void addNewCart (int paymentId, int customerId, int cartTotalPrice);
 
-       void AddPaymentId(int paymentId);
+        void editCart(int paymentId, int customerId, int cartTotalPrice);
 
-       void AddPayType(string payType);
+        void deleteCart(int cartId);
 
-       void  AddCustomerId(int customerId); 
-
-      void AddOrderTotalPrice(int otp); 
-
-
+        void retrieveCart(int cartId);
+      
     }
 }
