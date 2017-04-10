@@ -4,7 +4,6 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Bangazon_Terminal_Interface.Bangazon.Models;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -17,7 +16,7 @@ namespace Bangazon_Terminal_Interface.Bangazon
 
         public ProductRepository()
         {
-            _productConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RavenClausBangazon2"].ConnectionString);
+            _productConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RavenClausBangazon"].ConnectionString);
         }
         
 
@@ -28,7 +27,7 @@ namespace Bangazon_Terminal_Interface.Bangazon
             try
             {
                 var addProductIdCommand = _productConnection.CreateCommand();
-                addProductIdCommand.CommandText = "Insert Into RavenClausBangazon2.dbo.Product(productId) Values(@productId)";
+                addProductIdCommand.CommandText = "Insert Into RavenClausBangazon.dbo.Product(productId) Values(@productId)";
                 var idParameter = new SqlParameter("productId", SqlDbType.Int);
                 idParameter.Value = productId;
                 addProductIdCommand.ExecuteNonQuery();
@@ -44,12 +43,18 @@ namespace Bangazon_Terminal_Interface.Bangazon
             }
         }
 
-        public void AddProductName(string name)
+        
+        public void GetProductId(int productId)
         {
             throw new NotImplementedException();
         }
 
-        public void AddProductPrice(int price)
+        public void GetProductName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetProductPrice(int price)
         {
             throw new NotImplementedException();
         }
