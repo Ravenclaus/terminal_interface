@@ -20,17 +20,24 @@ namespace Bangazon_Terminal_Interface.Bangazon
         }
         
 
-        public void AddProductId(int productId)
+        public void AddProduct(string productName, int productPrice)
         {
             _productConnection.Open();
 
             try
             {
-                var addProductIdCommand = _productConnection.CreateCommand();
-                addProductIdCommand.CommandText = "Insert Into RavenClausBangazon.dbo.Product(productId) Values(@productId)";
-                var idParameter = new SqlParameter("productId", SqlDbType.Int);
-                idParameter.Value = productId;
-                addProductIdCommand.ExecuteNonQuery();
+                var addProductCommand = _productConnection.CreateCommand();
+                addProductCommand.CommandText = "Insert Into RavenClausBangazon.dbo.Product(productName, productPrice) Values(@productName, @productPrice)";
+
+                var productNameParameter = new SqlParameter("productName", SqlDbType.VarChar);
+                productNameParameter.Value = productName;
+                addProductCommand.Parameters.Add(productNameParameter);
+
+                var productPriceParameter = new SqlParameter("productPrice", SqlDbType.VarChar);
+                productPriceParameter.Value = productPrice;
+                addProductCommand.Parameters.Add(productPriceParameter);
+
+                addProductCommand.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
@@ -43,20 +50,10 @@ namespace Bangazon_Terminal_Interface.Bangazon
             }
         }
 
-        
-        public void GetProductId(int productId)
+        public void AddProductId(int productId)
         {
             throw new NotImplementedException();
         }
 
-        public void GetProductName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetProductPrice(int price)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
