@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,14 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bangazon\IProductRepository.cs" />
+    <Compile Include="Controllers\Contracts\ICartRepository.cs" />
+    <Compile Include="Controllers\Contracts\IProductRepository.cs" />
     <Compile Include="Bangazon\Models\Math.cs" />
     <Compile Include="Bangazon\Models\Product.cs" />
-    <Compile Include="Bangazon\Models\Order.cs" />
+    <Compile Include="Bangazon\Models\Cart.cs" />
     <Compile Include="Bangazon\Models\Payment.cs" />
     <Compile Include="Bangazon\Models\Customer.cs" />
     <Compile Include="Bangazon\Models\Validation.cs" />
-    <Compile Include="Bangazon\ProductRepository.cs" />
+    <Compile Include="DAL\CartRepository.cs" />
+    <Compile Include="DAL\ProductRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
