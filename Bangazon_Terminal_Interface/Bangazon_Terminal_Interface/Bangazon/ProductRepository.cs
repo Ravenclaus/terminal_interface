@@ -50,14 +50,15 @@ namespace Bangazon_Terminal_Interface.Bangazon
             }
         }
 
-        public void GetProduct(int productId)
+        public int GetProduct(int productId)
         {
             _productConnection.Open();
 
             try
             {
                 var getProductCommand = _productConnection.CreateCommand();
-                getProductCommand.CommandText = @"SELECT productId 
+                getProductCommand.CommandText = @"
+                    SELECT productId, productName, productPrice 
                     FROM RavenClausBangazon.dbo.Product 
                     WHERE productId = @productId";
 
@@ -65,11 +66,12 @@ namespace Bangazon_Terminal_Interface.Bangazon
                 productIdParameter.Value = productId;
                 getProductCommand.Parameters.Add(productIdParameter);
 
-                var productPriceParameter = new SqlParameter("productPrice", SqlDbType.VarChar);
-                productPriceParameter.Value = productPrice;
-                getProductCommand.Parameters.Add(productPriceParameter);
+                var reader = getProductCommand.ExecuteReader();
 
-                getProductCommand.ExecuteNonQuery();
+                if (reader.Read())
+                {
+                    var product = new Product
+                }
             }
             catch (SqlException ex)
             {
@@ -80,6 +82,7 @@ namespace Bangazon_Terminal_Interface.Bangazon
             {
                 _productConnection.Close();
             }
+            return 0;
         }
     }
 }
