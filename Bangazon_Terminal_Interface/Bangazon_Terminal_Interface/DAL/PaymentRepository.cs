@@ -57,57 +57,51 @@ namespace Bangazon_Terminal_Interface.DAL
             }
         }
 
-        public void AddPaymentId(int paymentId)
+        public string GetCustomerName(string customerName)
         {
+            var customName = "";
             _paymentConnection.Open();
 
             try
             {
-                var addPaymentIdCommand = _paymentConnection.CreateCommand();
-                addPaymentIdCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Payment(paymentType) VALUES(@paymentId)";
-                var idParameter = new SqlParameter("paymentId", SqlDbType.Int);
-                idParameter.Value = paymentId;
-                addPaymentIdCommand.Parameters.Add(idParameter);
+               
+                var getCustomerNameCommand = _paymentConnection.CreateCommand();
+                getCustomerNameCommand.CommandText = @"
+                                                    SELECT FirstName
+                                                    FROM Customer 
+                                                    WHERE FirstName = @customerName";
+                var customerParameter = new SqlParameter("customerName", SqlDbType.VarChar);
+                customerParameter.Value = customerName;
+                getCustomerNameCommand.Parameters.Add(customerParameter);
 
-                addPaymentIdCommand.ExecuteNonQuery();
+                var reader = getCustomerNameCommand.ExecuteReader();
+                
+                while (reader.Read())
+                {
+                    customName = reader.GetString(0);
+                }
+                // string newName = getCustomerNameCommand.ExecuteScalar().ToString();
+                //Console.WriteLine(newName);
 
             }
+
             catch (SqlException ex)
             {
                 Debug.WriteLine(ex.Message);
                 Debug.WriteLine(ex.StackTrace);
             }
+            
             finally
             {
                 _paymentConnection.Close();
+                
             }
-
+            return customName;
         }
 
-        public void AddAcctNumber(int acctNumber)
+        public void GetCustomerId(int customerId)
         {
-            _paymentConnection.Open();
-
-            try
-            {
-                var addAccountCommand = _paymentConnection.CreateCommand();
-                addAccountCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Payment(AccountNumber) VALUES(@accountNumber)";
-                var acctParameter = new SqlParameter("accountNumber", SqlDbType.Int);
-                acctParameter.Value = acctNumber;
-                addAccountCommand.Parameters.Add(acctParameter);
-
-                addAccountCommand.ExecuteNonQuery();
-
-            }
-            catch (SqlException ex)
-            {
-                Debug.WriteLine(ex.Message);
-                Debug.WriteLine(ex.StackTrace);
-            }
-            finally
-            {
-                _paymentConnection.Close();
-            }
+            throw new NotImplementedException();
         }
     }
 }
