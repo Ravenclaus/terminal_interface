@@ -10,12 +10,12 @@ namespace Bangazon_Terminal_Interface.Bangazon
     public interface IProductRepository
     {
         // Read methods
-        //List<Product> GetProduct();
 
-        void AddProductId(int productId);
+        //void AddProductId(int productId);
 
-        void AddProductName(string name);
+        void AddProduct(string productName, double productPrice);
 
-        void AddProductPrice(int price);
+        int GetProduct(int productId);
+        
     }
 }
