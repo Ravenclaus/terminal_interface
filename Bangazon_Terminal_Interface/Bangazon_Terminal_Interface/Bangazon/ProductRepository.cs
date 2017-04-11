@@ -50,10 +50,36 @@ namespace Bangazon_Terminal_Interface.Bangazon
             }
         }
 
-        public void AddProductId(int productId)
+        public void GetProduct(int productId)
         {
-            throw new NotImplementedException();
-        }
+            _productConnection.Open();
 
+            try
+            {
+                var getProductCommand = _productConnection.CreateCommand();
+                getProductCommand.CommandText = @"SELECT productId 
+                    FROM RavenClausBangazon.dbo.Product 
+                    WHERE productId = @productId";
+
+                var productIdParameter = new SqlParameter("productId", SqlDbType.Int);
+                productIdParameter.Value = productId;
+                getProductCommand.Parameters.Add(productIdParameter);
+
+                var productPriceParameter = new SqlParameter("productPrice", SqlDbType.VarChar);
+                productPriceParameter.Value = productPrice;
+                getProductCommand.Parameters.Add(productPriceParameter);
+
+                getProductCommand.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+            }
+            finally
+            {
+                _productConnection.Close();
+            }
+        }
     }
 }
