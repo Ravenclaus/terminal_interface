@@ -11,17 +11,23 @@ namespace Bangazon_Terminal_Interface
     {
         static void Main(string[] args)
         {
+            bool addingNewProducts = true;
             ProductRepository productRepo = new ProductRepository();
-            Console.WriteLine("Enter product: ");
 
-            string productName = Console.ReadLine();
+            //while (addingNewProducts)
+            //{
+                Console.WriteLine("Enter product: ");
+
+                string productName = Console.ReadLine();
 
 
-            Console.WriteLine("Enter price: ");
+                Console.WriteLine("Enter price: ");
 
-            int productPrice = int.Parse(Console.ReadLine());
+                double productPrice = double.Parse(Console.ReadLine());
 
-            productRepo.AddProduct(productName, productPrice);
+                productRepo.AddProduct(productName, productPrice);
+            //}
+
         }
     }
 }

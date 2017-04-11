@@ -20,7 +20,7 @@ namespace Bangazon_Terminal_Interface.Bangazon
         }
         
 
-        public void AddProduct(string productName, int productPrice)
+        public void AddProduct(string productName, double productPrice)
         {
             _productConnection.Open();
 
