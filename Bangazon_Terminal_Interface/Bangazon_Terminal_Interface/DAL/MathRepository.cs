@@ -20,6 +20,8 @@ namespace Bangazon_Terminal_Interface.DAL
             _mathConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RavenClausBangazon"].ConnectionString);
         }
 
+        //total # of orders place
+
         public void FindOrderTotal(int totalCost)
         {
             _mathConnection.Open();
@@ -27,13 +29,12 @@ namespace Bangazon_Terminal_Interface.DAL
             try
             {
                 var addOrderTotalCommand = _mathConnection.CreateCommand();
-                addOrderTotalCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.OrderTotalPrice(totalCost) VALUES(@totalCost)";
+                addOrderTotalCommand.CommandText = "GET stuff";
                 var totalCostParameter = new SqlParameter("totalCost", SqlDbType.Float);
                 totalCostParameter.Value = totalCost;
                 addOrderTotalCommand.Parameters.Add(totalCostParameter);
 
                 addOrderTotalCommand.ExecuteNonQuery();
-
             }
             catch (SqlException ex)
             {
@@ -46,15 +47,16 @@ namespace Bangazon_Terminal_Interface.DAL
             }
         }
 
-        public void FindPopularity(int rank)
+        public string FindPopularity(string rank)
         {
+            //GetMostPopularItem ? 
             _mathConnection.Open();
 
             try
             {
                 var addPopularityCommand = _mathConnection.CreateCommand();
-                // No column for Popularity in Products table, but do we need one, or are we just, a single time, finding the most popular item (times ordered)?
-                addPopularityCommand.CommandText = "INSERT INTO RavenClausBangazon2.dbo.Popularity(rank) VALUES(@rank)";
+                addPopularityCommand.CommandText = "SELECT * FROM Product ORDER BY ProductPrice DESC;";
+                // CHECK OUT BELOW STUFF -- IS IT NECESSARY ? 
                 var rankParameter = new SqlParameter("rank", SqlDbType.Float);
                 rankParameter.Value = rank;
                 addPopularityCommand.Parameters.Add(rankParameter);
@@ -71,6 +73,11 @@ namespace Bangazon_Terminal_Interface.DAL
             {
                 _mathConnection.Close();
             }
+        }
+
+        public void TotalRevenue(int totalRevenue)
+        {
+            throw new NotImplementedException();
         }
     }
 }
