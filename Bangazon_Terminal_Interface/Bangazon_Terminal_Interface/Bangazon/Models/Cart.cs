@@ -12,7 +12,7 @@ namespace Bangazon_Terminal_Interface.Bangazon.Models
 
         public int PaymentId { get; set; }
 
-        public int CusomerId { get; set; }
+        public int CustomerId { get; set; }
 
         public int CartTotalPrice { get; set; }
     }

@@ -14,6 +14,8 @@ namespace Bangazon_Terminal_Interface
             CartRepository cartRepository = new CartRepository();
 
             //GETS CART INFORMATION
+           
+
 
             //ADDS NEW CUSTOMER CART
             Console.WriteLine("Pick Payment, Customer, Price");
