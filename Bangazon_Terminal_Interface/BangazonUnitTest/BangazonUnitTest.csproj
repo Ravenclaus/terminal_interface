@@ -62,6 +62,12 @@
       <Name>Bangazon_Terminal_Interface</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bangazon_Terminal_Interface\Bangazon_Terminal_Interface.csproj">
+      <Project>{452CE18B-C1B9-48E1-B3C7-84FFE176DA97}</Project>
+      <Name>Bangazon_Terminal_Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
