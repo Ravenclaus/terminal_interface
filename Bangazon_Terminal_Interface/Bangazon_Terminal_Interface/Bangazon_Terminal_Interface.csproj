@@ -61,7 +61,6 @@
     <Compile Include="DAL\PaymentRepository.cs" />
     <Compile Include="Controllers\Contracts\ICustomer.cs" />
     <Compile Include="DAL\CustomerRepository.cs" />
-    <Compile Include="Bangazon\ProductRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

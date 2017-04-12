@@ -39,10 +39,12 @@ namespace Bangazon_Terminal_Interface
                     Console.WriteLine("Let's start with your name. Enter your first name below and press Enter:");
                     string userFirstName = Console.ReadLine();
 
-                    Console.WriteLine("Hi there, " + userFirstName + "! Good to meet you. Now, enter your last name below and press Enter:");
+                    Console.WriteLine("Hi there, " + userFirstName +
+                                      "! Good to meet you. Now, enter your last name below and press Enter:");
                     string userLastName = Console.ReadLine();
 
-                    Console.WriteLine("Great name. Let's get your address next. Type your street address first and press Enter:");
+                    Console.WriteLine(
+                        "Great name. Let's get your address next. Type your street address first and press Enter:");
                     string userStreet = Console.ReadLine();
 
                     Console.WriteLine("Type the city you're located in and press Enter:");
@@ -54,11 +56,13 @@ namespace Bangazon_Terminal_Interface
                     Console.WriteLine("And finally, enter your 5-digit zipcode and press Enter:");
                     int userZipCode = int.Parse(Console.ReadLine());
 
-                    Console.WriteLine("Awesome. Last item: just give use your 10-digit phone number (no hyphens, spaces, or parenthesis) and press Enter:");
+                    Console.WriteLine(
+                        "Awesome. Last item: just give use your 10-digit phone number (no hyphens, spaces, or parenthesis) and press Enter:");
                     int userPhone = int.Parse(Console.ReadLine());
 
 
-                    customerRepo.AddNewCustomerAccount(userFirstName, userLastName, userStreet, userCity, userState, userZipCode, userPhone);
+                    customerRepo.AddNewCustomerAccount(userFirstName, userLastName, userStreet, userCity, userState,
+                        userZipCode, userPhone);
 
                 }
                 if (userSelection == "2")
@@ -93,25 +97,6 @@ namespace Bangazon_Terminal_Interface
 
                 }
             }
-
-
-
-
-
-
-
-
-<<<<<<< Updated upstream
-=======
-            var returnCustomer = paymentRepository.GetCustomer("Bob", 0);
-            Console.WriteLine(returnCustomer);
-
-         
->>>>>>> Stashed changes
-
-
-
-
         }
     }
 }

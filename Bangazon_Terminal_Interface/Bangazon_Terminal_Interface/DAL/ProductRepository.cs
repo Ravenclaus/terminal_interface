@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using Bangazon_Terminal_Interface.Bangazon.Models;
 
-namespace Bangazon_Terminal_Interface.Bangazon
+namespace Bangazon_Terminal_Interface.Bangazon.DAL
 {
     public class ProductRepository : IProductRepository
     {
@@ -70,7 +71,7 @@ namespace Bangazon_Terminal_Interface.Bangazon
 
                 if (reader.Read())
                 {
-                    var product = new Product
+                    var product = new Product();
                 }
             }
             catch (SqlException ex)
