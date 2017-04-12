@@ -10,10 +10,7 @@ namespace Bangazon_Terminal_Interface.Controllers.Contracts
     {
         void AddPaymentType(string name, int acctNum, int customerId);
 
-
-        void GetCustomerId(int customerId);
-
-        string GetCustomerName(string customerFirstName);
+        string GetCustomer(string customerFirstName, int customerId);
 
     }
 }

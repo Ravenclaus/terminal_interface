@@ -101,6 +101,13 @@ namespace Bangazon_Terminal_Interface
 
 
 
+<<<<<<< Updated upstream
+=======
+            var returnCustomer = paymentRepository.GetCustomer("Bob", 0);
+            Console.WriteLine(returnCustomer);
+
+         
+>>>>>>> Stashed changes
 
 
 

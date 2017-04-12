@@ -57,7 +57,7 @@ namespace Bangazon_Terminal_Interface.DAL
             }
         }
 
-        public string GetCustomerName(string customerName)
+        public string GetCustomer(string customerName, int customerId)
         {
             var customName = "";
             _paymentConnection.Open();
@@ -80,8 +80,6 @@ namespace Bangazon_Terminal_Interface.DAL
                 {
                     customName = reader.GetString(0);
                 }
-                // string newName = getCustomerNameCommand.ExecuteScalar().ToString();
-                //Console.WriteLine(newName);
 
             }
 
@@ -99,9 +97,5 @@ namespace Bangazon_Terminal_Interface.DAL
             return customName;
         }
 
-        public void GetCustomerId(int customerId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
