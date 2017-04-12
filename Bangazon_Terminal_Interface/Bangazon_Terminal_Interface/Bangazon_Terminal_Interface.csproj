@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -54,6 +54,8 @@
     <Compile Include="Bangazon\Models\Payment.cs" />
     <Compile Include="Bangazon\Models\Customer.cs" />
     <Compile Include="Bangazon\Models\Validation.cs" />
+    <Compile Include="Controllers\Contracts\IPayment.cs" />
+    <Compile Include="DAL\PaymentRepository.cs" />
     <Compile Include="Controllers\Contracts\ICustomer.cs" />
     <Compile Include="DAL\CustomerRepository.cs" />
     <Compile Include="Bangazon\ProductRepository.cs" />
