@@ -10,10 +10,10 @@ namespace Bangazon_Terminal_Interface
 {
     public class Program
     {
+
         static void Main(string[] args)
         {
             bool isRunning = true;
-
             Console.WriteLine("*********************************************************");
             Console.WriteLine("**  Welcome to Bangazon! Command Line Ordering System  **");
             Console.WriteLine("*********************************************************");
@@ -25,6 +25,7 @@ namespace Bangazon_Terminal_Interface
             Console.WriteLine("6. See product popularity");
             Console.WriteLine("7. Leave Bangazon!");
 
+            Customer activeCustomer = new Customer();
 
             while (isRunning)
             {
@@ -60,9 +61,12 @@ namespace Bangazon_Terminal_Interface
                         "Awesome. Last item: just give use your 10-digit phone number (no hyphens, spaces, or parenthesis) and press Enter:");
                     int userPhone = int.Parse(Console.ReadLine());
 
-
-                    customerRepo.AddNewCustomerAccount(userFirstName, userLastName, userStreet, userCity, userState,
+                     activeCustomer =  customerRepo.AddNewCustomerAccount(userFirstName, userLastName, userStreet, userCity, userState,
                         userZipCode, userPhone);
+                    Console.WriteLine(activeCustomer.CustomerId);
+
+                    
+                   
 
                 }
                 if (userSelection == "2")
@@ -71,11 +75,15 @@ namespace Bangazon_Terminal_Interface
                 }
                 if (userSelection == "3")
                 {
-                    Console.WriteLine("");
+                    Console.WriteLine("Enter Payment Type (Amex, Visa, Checking)");
+                    string userPaymentType = Console.ReadLine();
+                    Console.WriteLine("Please enter 5 Digit Account Number");
+                    int userAccountNumber = int.Parse(Console.ReadLine());
+                    PaymentRepository paymentRepository = new PaymentRepository();
+                    paymentRepository.AddPaymentType(userPaymentType, userAccountNumber, activeCustomer.CustomerId );
                 }
                 if (userSelection == "4")
                 {
-
                 }
                 if (userSelection == "5")
                 {
@@ -96,6 +104,10 @@ namespace Bangazon_Terminal_Interface
                     Console.WriteLine("I'm sorry, that option is not valid. Please choose and option 1 through 7.");
 
                 }
+
+              
+               
+                
             }
         }
     }
