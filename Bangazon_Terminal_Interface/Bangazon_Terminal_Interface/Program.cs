@@ -84,9 +84,15 @@ namespace Bangazon_Terminal_Interface
                 }
                 if (userSelection == "4")
                 {
+                    PaymentRepository paymentRepository = new PaymentRepository();
+                    paymentRepository.GetPaymentList(activeCustomer.CustomerId);
                 }
                 if (userSelection == "5")
                 {
+                    Console.WriteLine("Choose Payment Type");
+                    string chooseType = Console.ReadLine();
+                    PaymentRepository paymentRepository = new PaymentRepository();
+                    paymentRepository.GetPaymentList(activeCustomer.CustomerId);
 
                 }
                 if (userSelection == "6")
