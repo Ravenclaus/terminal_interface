@@ -64,10 +64,16 @@ namespace Bangazon_Terminal_Interface
                     customerRepo.AddNewCustomerAccount(userFirstName, userLastName, userStreet, userCity, userState,
                         userZipCode, userPhone);
 
+                    Console.WriteLine("Ok, you're all added. Choose another option 1 through 7.");
+
                 }
                 if (userSelection == "2")
                 {
+                    CustomerRepository customerRepo = new CustomerRepository();
 
+                    Console.WriteLine("Choose from the existing customers below:");
+
+                    customerRepo.GetListOfExisitingCustomers();
                 }
                 if (userSelection == "3")
                 {
