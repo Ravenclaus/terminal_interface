@@ -13,9 +13,11 @@ namespace Bangazon_Terminal_Interface.Bangazon
 
         //void AddProductId(int productId);
 
+        List<Product> GetProduct(int productId, string productName, double productPrice);
+
         void AddProduct(string productName, double productPrice);
 
-        int GetProduct(int productId);
+        //int GetProduct(int productId, string productName, double productPrice);
         
     }
 }

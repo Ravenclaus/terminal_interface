@@ -1,4 +1,5 @@
 ﻿using Bangazon_Terminal_Interface.Bangazon;
+using Bangazon_Terminal_Interface.Bangazon.DAL;
 using Bangazon_Terminal_Interface.DAL;
 using System;
 using System.Collections.Generic;
@@ -84,6 +85,13 @@ namespace Bangazon_Terminal_Interface
                 }
                 if (userSelection == "4")
                 {
+                    //list out all the products
+                    ProductRepository products = new ProductRepository();
+                    Console.WriteLine("Here is a list of the products.");
+
+                    //products.GetProduct(int productId, string productName, double productPrice);
+
+                    //give option to pick a product by id
                 }
                 if (userSelection == "5")
                 {

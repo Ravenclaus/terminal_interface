@@ -34,7 +34,7 @@ namespace Bangazon_Terminal_Interface.Bangazon.DAL
                 productNameParameter.Value = productName;
                 addProductCommand.Parameters.Add(productNameParameter);
 
-                var productPriceParameter = new SqlParameter("productPrice", SqlDbType.VarChar);
+                var productPriceParameter = new SqlParameter("productPrice", SqlDbType.Int);
                 productPriceParameter.Value = productPrice;
                 addProductCommand.Parameters.Add(productPriceParameter);
 
@@ -51,7 +51,7 @@ namespace Bangazon_Terminal_Interface.Bangazon.DAL
             }
         }
 
-        public int GetProduct(int productId)
+        public List<Product> GetProduct(int productId, string productName, double productPrice)
         {
             _productConnection.Open();
 
@@ -67,12 +67,30 @@ namespace Bangazon_Terminal_Interface.Bangazon.DAL
                 productIdParameter.Value = productId;
                 getProductCommand.Parameters.Add(productIdParameter);
 
+                var productNameParameter = new SqlParameter("productName", SqlDbType.VarChar);
+                productNameParameter.Value = productName;
+                getProductCommand.Parameters.Add(productNameParameter);
+
+                var productPriceParameter = new SqlParameter("productPrice", SqlDbType.Int);
+                productPriceParameter.Value = productPrice;
+                getProductCommand.Parameters.Add(productPriceParameter);
+
                 var reader = getProductCommand.ExecuteReader();
 
-                if (reader.Read())
+                var products = new List<Product>();
+                while (reader.Read())
                 {
-                    var product = new Product();
+                    var product = new Product
+                    {
+                        ProductId = reader.GetInt32(0),
+                        //ProductId = Convert.ToInt32(reader),
+                        ProductName = reader.GetString(1),
+                        ProductPrice = reader.GetDouble(2)
+                        //, Cart = new Cart { CartId = reader.GetInt32(3)}
+                    };
+                    products.Add(product);
                 }
+                return products;
             }
             catch (SqlException ex)
             {
@@ -83,7 +101,7 @@ namespace Bangazon_Terminal_Interface.Bangazon.DAL
             {
                 _productConnection.Close();
             }
-            return 0;
+            return null;
         }
     }
 }
