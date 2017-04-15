@@ -20,6 +20,7 @@ namespace Bangazon_Terminal_Interface.DAL
         {
             _cartConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RavenClausBangazon"].ConnectionString);
         }
+      
         public void addNewCart(int paymentId, int customerId, int cartTotalPrice)
         {
             _cartConnection.Open();
@@ -95,6 +96,8 @@ namespace Bangazon_Terminal_Interface.DAL
             }
             return null;
         }
+
+      
     }
 }
 
