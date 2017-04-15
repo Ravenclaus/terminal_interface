@@ -20,11 +20,12 @@ namespace Bangazon_Terminal_Interface
             Console.WriteLine("*********************************************************");
             Console.WriteLine("1. Create an account");
             Console.WriteLine("2. Choose active customer");
-            Console.WriteLine("3. Create a payment option");
-            Console.WriteLine("4. Add product to shopping cart");
-            Console.WriteLine("5. Complete an order");
-            Console.WriteLine("6. See product popularity");
-            Console.WriteLine("7. Leave Bangazon!");
+            Console.WriteLine("3. View Products");
+            Console.WriteLine("4. Create a payment option");
+            Console.WriteLine("5. Add product to shopping cart");
+            Console.WriteLine("6. Complete an order");
+            Console.WriteLine("7. See product popularity");
+            Console.WriteLine("8. Leave Bangazon!");
 
             Customer activeCustomer = new Customer();
 
@@ -76,6 +77,17 @@ namespace Bangazon_Terminal_Interface
                 }
                 if (userSelection == "3")
                 {
+                    //list out all the products
+                    // ProductRepository products = new ProductRepository();
+                    List<ProductRepository> products2 = new List<ProductRepository>();
+                    Console.WriteLine("Here is a list of the products.");
+
+                    //products2.GetProduct(productId, string productName, double productPrice);
+
+                    //give option to pick a product by id
+                }
+                if (userSelection == "4")
+                {
                     Console.WriteLine("Enter Payment Type (Amex, Visa, Checking)");
                     string userPaymentType = Console.ReadLine();
                     Console.WriteLine("Please enter 5 Digit Account Number");
@@ -83,26 +95,19 @@ namespace Bangazon_Terminal_Interface
                     PaymentRepository paymentRepository = new PaymentRepository();
                     paymentRepository.AddPaymentType(userPaymentType, userAccountNumber, activeCustomer.CustomerId );
                 }
-                if (userSelection == "4")
-                {
-                    //list out all the products
-                    // ProductRepository products = new ProductRepository();
-                    List<ProductRepository> products2 = new List<ProductRepository>();
-                    Console.WriteLine("Here is a list of the products.");
-
-                    products2.GetProduct(productId, string productName, double productPrice);
-
-                    //give option to pick a product by id
-                }
                 if (userSelection == "5")
                 {
-
+                   
                 }
                 if (userSelection == "6")
                 {
 
                 }
-                else if (userSelection == "7")
+                if (userSelection == "7")
+                {
+
+                }
+                else if (userSelection == "8")
                 {
                     Console.WriteLine("Thanks for visiting FakeAmazon! Have a nice day!");
                     isRunning = false;

@@ -63,17 +63,17 @@ namespace Bangazon_Terminal_Interface.Bangazon.DAL
                     FROM RavenClausBangazon.dbo.Product 
                     WHERE productId = @productId";
 
-                var productIdParameter = new SqlParameter("productId", SqlDbType.Int);
-                productIdParameter.Value = productId;
-                getProductCommand.Parameters.Add(productIdParameter);
+                //var productIdParameter = new SqlParameter("productId", SqlDbType.Int);
+                //productIdParameter.Value = productId;
+                //getProductCommand.Parameters.Add(productIdParameter);
 
-                var productNameParameter = new SqlParameter("productName", SqlDbType.VarChar);
-                productNameParameter.Value = productName;
-                getProductCommand.Parameters.Add(productNameParameter);
+                //var productNameParameter = new SqlParameter("productName", SqlDbType.VarChar);
+                //productNameParameter.Value = productName;
+                //getProductCommand.Parameters.Add(productNameParameter);
 
-                var productPriceParameter = new SqlParameter("productPrice", SqlDbType.Int);
-                productPriceParameter.Value = productPrice;
-                getProductCommand.Parameters.Add(productPriceParameter);
+                //var productPriceParameter = new SqlParameter("productPrice", SqlDbType.Int);
+                //productPriceParameter.Value = productPrice;
+                //getProductCommand.Parameters.Add(productPriceParameter);
 
                 var reader = getProductCommand.ExecuteReader();
 
@@ -101,7 +101,7 @@ namespace Bangazon_Terminal_Interface.Bangazon.DAL
             {
                 _productConnection.Close();
             }
-            return null;
+            return new List<Product>();
         }
     }
 }
