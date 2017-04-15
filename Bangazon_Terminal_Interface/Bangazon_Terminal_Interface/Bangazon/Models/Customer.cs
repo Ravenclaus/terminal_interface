@@ -9,6 +9,8 @@ namespace Bangazon_Terminal_Interface.Bangazon
     public class Customer
     {
         public Customer _newCustomer { get; set; }
+
+        public List<Customer> _ListOfCustomers { get; set; }
         public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
