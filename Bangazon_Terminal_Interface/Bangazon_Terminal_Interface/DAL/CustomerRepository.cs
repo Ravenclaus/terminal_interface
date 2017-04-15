@@ -79,7 +79,6 @@ namespace Bangazon_Terminal_Interface.DAL
 
         public List<Customer> GetListOfExisitingCustomers()
         {
-            //throw new NotImplementedException();
             _customerConnection.Open();
 
             try
@@ -109,10 +108,16 @@ namespace Bangazon_Terminal_Interface.DAL
                     };
 
                     existingCustomers.Add(individualCustomer);
-                    //Console.WriteLine(existingCustomers[0]);
-                    Console.WriteLine(individualCustomer.FirstName);
-                }
+                    int existingCustomerId = individualCustomer.CustomerId;
 
+
+                    //Limits the amount of options that show on screen for now:
+                    if (existingCustomerId < 6)
+                    {
+                        Console.WriteLine("Account Number: " + existingCustomerId.ToString() + ", Name: " + individualCustomer.FirstName);
+                    }
+                    
+                }
 
                 return existingCustomers;
 

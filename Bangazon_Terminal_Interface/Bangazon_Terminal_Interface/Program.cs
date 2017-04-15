@@ -25,6 +25,7 @@ namespace Bangazon_Terminal_Interface
             Console.WriteLine("6. See product popularity");
             Console.WriteLine("7. Leave Bangazon!");
 
+            int customerAccountId = 0;
 
             while (isRunning)
             {
@@ -74,10 +75,12 @@ namespace Bangazon_Terminal_Interface
                     Console.WriteLine("Choose from the existing customers below:");
 
                     customerRepo.GetListOfExisitingCustomers();
+                    customerAccountId = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Your Account Number you've chosen is: " + customerAccountId.ToString());
                 }
                 if (userSelection == "3")
                 {
-                    Console.WriteLine("");
+                    
                 }
                 if (userSelection == "4")
                 {
