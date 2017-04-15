@@ -20,16 +20,18 @@ namespace Bangazon_Terminal_Interface.DAL
             _mathConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["RavenClausBangazon"].ConnectionString);
         }
 
-        //total # of orders place
+        //total # of orders placed
 
         public void FindOrderTotal(int totalCost)
         {
+            var cartTotalPrice = 0.00;
             _mathConnection.Open();
 
             try
             {
                 var addOrderTotalCommand = _mathConnection.CreateCommand();
-                addOrderTotalCommand.CommandText = "GET stuff";
+                addOrderTotalCommand.CommandText = "SELECT ProductId, ProductName, ProductPrice FROM Product";
+                // 
                 var totalCostParameter = new SqlParameter("totalCost", SqlDbType.Float);
                 totalCostParameter.Value = totalCost;
                 addOrderTotalCommand.Parameters.Add(totalCostParameter);
