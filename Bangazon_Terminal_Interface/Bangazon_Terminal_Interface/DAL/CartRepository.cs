@@ -85,7 +85,10 @@ namespace Bangazon_Terminal_Interface.DAL
 
                 }
             }
-            catch (Exception ex) { Console.WriteLine("This is not working!"); }
+            catch (Exception ex)
+            {
+                Console.WriteLine("This is not working!");
+            }
             finally
             {
                 _cartConnection.Close();

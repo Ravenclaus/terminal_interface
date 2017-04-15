@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -97,6 +98,60 @@ namespace Bangazon_Terminal_Interface.DAL
            
             return null;
         }
+
+        public List<Customer> PickFromListOfExisitingCustomers()
+        {
+            _customerConnection.Open();
+
+            try
+            {
+                var getCustomerListCommand = _customerConnection.CreateCommand();
+                getCustomerListCommand.CommandText = @" SELECT CustomerId, FirstName, LastName, Street, City, State, ZipCode, Phone FROM Customer"; 
+
+                var reader = getCustomerListCommand.ExecuteReader();
+               var userCustomers = new List<Customer>();
+
+                while (reader.Read())
+                {
+                    var customer = new Customer
+                    //Customer customer = new Customer
+                    {
+                        CustomerId = reader.GetInt32(0),
+                        FirstName = reader.GetString(1),
+                        LastName = reader.GetString(2),
+                        Street = reader.GetString(3),
+                        City = reader.GetString(4),
+                        State = reader.GetString(5),
+                        ZipCode = reader.GetInt32(6),
+                        Phone = reader.GetInt32(7)
+                       
+
+                    };
+                    userCustomers.Add(customer);
+                    
+                    if (customer.CustomerId < 6)
+                    {
+                        Console.WriteLine(customer.CustomerId.ToString() + " " + customer.FirstName + " " + customer.LastName);
+                    }
+
+                }
+                return userCustomers;
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+            }
+            finally
+            {
+                _customerConnection.Close();
+            }
+
+            return new List<Customer>();
+        }
+
+       
     }
 
 }

@@ -11,11 +11,15 @@ namespace Bangazon_Terminal_Interface.Controllers.Contracts
     {
         Customer AddNewCustomerAccount(string userFirstName, string userLastName, string userStreet, string userCity, string userState, int userZipCode, int userPhone);
 
-        /*
-        List<Customer> GetListOfExisitingCustomers();
-        Customer GetCustomerById(int customerId);
-        */
         
+
+        List<Customer> PickFromListOfExisitingCustomers();
+
         
+
+        //Customer GetCustomerById(int customerId);
+
+
+
     }
 }
