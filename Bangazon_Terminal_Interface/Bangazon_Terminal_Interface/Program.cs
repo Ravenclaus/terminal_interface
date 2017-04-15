@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Bangazon_Terminal_Interface.Bangazon;
 using Bangazon_Terminal_Interface.DAL;
 
@@ -21,8 +20,8 @@ namespace Bangazon_Terminal_Interface
             Console.WriteLine("6. See product popularity");
             Console.WriteLine("7. Leave Bangazon!");
 
-            Customer activeCustomer = new Customer();
-            int customerAccoutId = activeCustomer.CustomerId;
+            var activeCustomer = new Customer();
+            var customerAccountId = activeCustomer.CustomerId;
 
             while (isRunning)
             {
@@ -67,14 +66,12 @@ namespace Bangazon_Terminal_Interface
 
                 if (userSelection == "2")
                 {
-                    CustomerRepository customerRepository = new CustomerRepository();
+                    var customerRepository = new CustomerRepository();
                     Console.WriteLine("Which customer will be active?");
                     customerRepository.PickFromListOfExisitingCustomers();
-                    customerAccoutId = int.Parse(Console.ReadLine());
+                    customerAccountId = int.Parse(Console.ReadLine());
 
-                    Console.WriteLine("Your selected customer is " + customerAccoutId);
-
-
+                    Console.WriteLine("Your selected customer is " + customerAccountId);
                 }
 
                 if (userSelection == "3")
@@ -83,8 +80,8 @@ namespace Bangazon_Terminal_Interface
                     var userPaymentType = Console.ReadLine();
                     Console.WriteLine("Please enter 5 Digit Account Number");
                     var userAccountNumber = int.Parse(Console.ReadLine());
-                    PaymentRepository paymentRepository = new PaymentRepository();
-                    paymentRepository.AddPaymentType(userPaymentType, userAccountNumber,customerAccoutId);
+                    var paymentRepository = new PaymentRepository();
+                    paymentRepository.AddPaymentType(userPaymentType, userAccountNumber, customerAccountId);
                 }
 
                 if (userSelection == "4")
