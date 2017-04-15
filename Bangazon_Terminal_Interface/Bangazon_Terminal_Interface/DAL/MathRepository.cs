@@ -56,7 +56,7 @@ namespace Bangazon_Terminal_Interface.DAL
             {
                 var addPopularityCommand = _mathConnection.CreateCommand();
                 addPopularityCommand.CommandText = "SELECT * FROM Product ORDER BY ProductPrice DESC;";
-                // CHECK OUT BELOW STUFF -- IS IT NECESSARY ? 
+                // CHECK OUT BELOW STUFF -- do we need a PRODUCTS, ORDERS, CUSTOMERS, and REVENUE parameter? 
                 var rankParameter = new SqlParameter("rank", SqlDbType.Float);
                 rankParameter.Value = rank;
                 addPopularityCommand.Parameters.Add(rankParameter);
