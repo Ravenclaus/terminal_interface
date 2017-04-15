@@ -128,6 +128,8 @@ namespace Bangazon_Terminal_Interface.DAL
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
             }
             finally
             {
