@@ -82,9 +82,12 @@ namespace Bangazon_Terminal_Interface
                 if (userSelection == "3")
                 {
                     //list out all the products
-                    // ProductRepository products = new ProductRepository();
-                    List<ProductRepository> products2 = new List<ProductRepository>();
+                    ProductRepository products = new ProductRepository();
+                    //List<ProductRepository> products2 = new List<ProductRepository>();
+
                     Console.WriteLine("Here is a list of the products.");
+                    products.GetProduct();
+                    //Console.WriteLine(products.GetProduct);
 
                     //products2.GetProduct(productId, string productName, double productPrice);
 

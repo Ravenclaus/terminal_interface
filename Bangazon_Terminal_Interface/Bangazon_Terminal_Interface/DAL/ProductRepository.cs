@@ -51,7 +51,7 @@ namespace Bangazon_Terminal_Interface.Bangazon.DAL
             }
         }
 
-        public List<Product> GetProduct(int productId, string productName, double productPrice)
+        public List<Product> GetProduct()
         {
             _productConnection.Open();
 
@@ -89,6 +89,12 @@ namespace Bangazon_Terminal_Interface.Bangazon.DAL
                         //, Cart = new Cart { CartId = reader.GetInt32(3)}
                     };
                     products.Add(product);
+
+                    if (product.ProductId < 10)
+                    {
+                        //string productString = "Product Id: " + product.ProductId.ToString() + " Product Name: " + product.ProductName.ToString() + " Product Price: " + product.ProductPrice.ToString();
+                        Console.WriteLine("Product Id: " + product.ProductId.ToString() + " Product Name: " + product.ProductName.ToString() + " Product Price: " + product.ProductPrice.ToString());
+                    }
                 }
                 return products;
             }
