@@ -10,7 +10,7 @@ namespace Bangazon_Terminal_Interface.Controllers.Contracts
 {
     public interface IPayment
     {
-        void AddPaymentType(string name, int acctNum, int customerId);
+        Payment AddPaymentType(string name, int acctNum, int customerId);
 
         Customer GetCustomer( int customerId);
 

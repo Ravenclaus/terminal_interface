@@ -23,6 +23,7 @@ namespace Bangazon_Terminal_Interface
 
             var activeCustomer = new Customer();
             var customerAccountId = activeCustomer.CustomerId;
+            var paymentAccountId = customerAccountId;
 
             List<string> activeProductSelections = new List<string>();
 
@@ -66,6 +67,7 @@ namespace Bangazon_Terminal_Interface
                         userCity, userState,
                         userZipCode, userPhone);
                     Console.WriteLine(activeCustomer.CustomerId);
+                    
                     //customList = activeCustomer.;
                 }
 

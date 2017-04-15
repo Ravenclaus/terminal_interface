@@ -13,6 +13,10 @@ namespace Bangazon_Terminal_Interface.DAL
 {
     public class PaymentRepository : IPayment
     {
+
+        Payment _newCustomerPayment = new Payment();
+        Customer _customer = new Customer();
+
         private readonly IDbConnection _paymentConnection;
 
         public PaymentRepository()
@@ -22,7 +26,7 @@ namespace Bangazon_Terminal_Interface.DAL
                 new SqlConnection(ConfigurationManager.ConnectionStrings["RavenClausBangazon"].ConnectionString);
         }
 
-        public void AddPaymentType(string payType, int acctNum, int customerId)
+        public Payment AddPaymentType(string payType, int acctNum, int customerId)
         {
             _paymentConnection.Open();
 
@@ -30,7 +34,7 @@ namespace Bangazon_Terminal_Interface.DAL
             {
                 var addPaymentTypeCommand = _paymentConnection.CreateCommand();
                 addPaymentTypeCommand.CommandText =
-                    "INSERT INTO RavenClausBangazon.dbo.Payment(paymentType, accountNumber, customerId) VALUES(@paymentType, @accountNumber, @customerId)";
+                    "INSERT INTO RavenClausBangazon.dbo.Payment(paymentType, accountNumber, customerId) VALUES(@paymentType, @accountNumber, @customerId);SELECT SCOPE_IDENTITY()";
 
                 var payTypeParameter = new SqlParameter("paymentType", SqlDbType.VarChar);
                 payTypeParameter.Value = payType;
@@ -44,7 +48,20 @@ namespace Bangazon_Terminal_Interface.DAL
                 customerIdParameter.Value = customerId;
                 addPaymentTypeCommand.Parameters.Add(customerIdParameter);
 
-                addPaymentTypeCommand.ExecuteNonQuery();
+                var reader = addPaymentTypeCommand.ExecuteScalar();
+
+                if (reader != null)
+                {
+                    var id = reader.ToString();
+                    //customer.CustomerId = _newCustomerPayment
+                    _newCustomerPayment.PaymentTypeId = Convert.ToInt32(id);
+                    _newCustomerPayment.AccountNumber = acctNum;
+                    _newCustomerPayment.PaymentType = payType;
+                   
+                    Console.WriteLine("Your Payment Id is " + id);
+                }
+                return _newCustomerPayment;
+
             }
             catch (SqlException ex)
             {
@@ -55,6 +72,7 @@ namespace Bangazon_Terminal_Interface.DAL
             {
                 _paymentConnection.Close();
             }
+            return null;
         }
 
         public Customer GetCustomer(int customerId)
