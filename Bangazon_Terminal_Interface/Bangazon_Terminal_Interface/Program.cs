@@ -27,6 +27,8 @@ namespace Bangazon_Terminal_Interface
 
             Customer activeCustomer = new Customer();
 
+            List<string> activeProductSelections = new List<string>();
+
             while (isRunning)
             {
                 string userSelection = Console.ReadLine();
@@ -55,6 +57,7 @@ namespace Bangazon_Terminal_Interface
                     string userState = Console.ReadLine();
 
                     Console.WriteLine("And finally, enter your 5-digit zipcode and press Enter:");
+
                     int userZipCode = int.Parse(Console.ReadLine());
 
                     Console.WriteLine(
@@ -84,6 +87,35 @@ namespace Bangazon_Terminal_Interface
                 }
                 if (userSelection == "4")
                 {
+                    Console.WriteLine("********  PRODUCTS AVAILABLE **********");
+                    Console.WriteLine("1. Apples       $1.50");
+                    Console.WriteLine("2. Nelly CD       $2.00");
+                    Console.WriteLine("3. Toaster       $25.00");
+                    Console.WriteLine("4. Fish Tank       $75.00");
+                    Console.WriteLine("5. Salmon Flakes Cereal       $10.00");
+                    Console.WriteLine("  ");
+                    var selection = true;
+            
+                    while (selection)
+                    {
+                        Console.WriteLine("Select Product By Number or hit 'X' to Exit");
+                        string productSelection = Console.ReadLine();
+
+                        if(productSelection == "x")
+                        {
+                            selection = false;
+                            break;
+                        }
+                        else
+                        {
+                            activeProductSelections.Add(productSelection);
+            
+                        }
+
+
+
+                    }
+
                 }
                 if (userSelection == "5")
                 {
